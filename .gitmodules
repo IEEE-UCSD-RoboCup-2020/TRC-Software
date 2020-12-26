@@ -1,0 +1,6 @@
+[submodule "TritonBot"]
+	path = TritonBot
+	url = https://github.com/IEEE-UCSD-RoboCup-2020/TritonBot.git
+[submodule "Virtual-Firmware-grSim"]
+	path = Virtual-Firmware-grSim
+	url = https://github.com/IEEE-UCSD-RoboCup-2020/Virtual-Firmware-grSim.git
