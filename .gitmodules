@@ -4,3 +4,6 @@
 [submodule "Virtual-Firmware-grSim"]
 	path = Virtual-Firmware-grSim
 	url = https://github.com/IEEE-UCSD-RoboCup-2020/Virtual-Firmware-grSim.git
+[submodule "PyRemote"]
+	path = PyRemote
+	url = https://github.com/IEEE-UCSD-RoboCup-2020/PyRemote.git
