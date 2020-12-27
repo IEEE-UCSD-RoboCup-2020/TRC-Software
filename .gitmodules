@@ -7,3 +7,6 @@
 [submodule "PyRemote"]
 	path = PyRemote
 	url = https://github.com/IEEE-UCSD-RoboCup-2020/PyRemote.git
+[submodule "TritonSoccerAI"]
+	path = TritonSoccerAI
+	url = https://github.com/IEEE-UCSD-RoboCup-2020/TritonSoccerAI.git
