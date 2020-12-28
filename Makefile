@@ -1,3 +1,5 @@
+all: cpp java firm
+
 run:
 	python run2.py
 
@@ -13,6 +15,6 @@ java:
 firm:
 	cd Virtual-Firmware-grSim && make
 
-all: firm
+init: firm
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install package
