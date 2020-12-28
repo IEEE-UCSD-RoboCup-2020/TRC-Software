@@ -1,0 +1,18 @@
+run:
+	python run2.py
+
+grSim:
+	./../grSim/bin/grSim
+
+cpp:
+	cd TritonBot/build && make -j
+
+java:
+	cd TritonSoccerAI && mvn package
+
+firm:
+	cd Virtual-Firmware-grSim && make
+
+all: firm
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonSoccerAI; mvn clean install package
