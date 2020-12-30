@@ -12,8 +12,13 @@ sudo apt update
 sudo apt install git build-essential cmake pkg-config qt5-default libqt5opengl5-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev protobuf-compiler libode-dev libboost-all-dev maven openjdk-14-jdk libarmadillo-dev clang 
 
 # Git clone
-git clone --recurse-submodules -j8 https://github.com/IEEE-UCSD-RoboCup-2020/TRC-Software.git
 git clone https://github.com/RoboCup-SSL/grSim.git
+git clone https://github.com/IEEE-UCSD-RoboCup-2020/TRC-Software.git
+cd TRC-Software
+git clone https://github.com/IEEE-UCSD-RoboCup-2020/Virtual-Firmware-grSim.git
+git clone https://github.com/IEEE-UCSD-RoboCup-2020/PyRemote.git
+git clone https://github.com/IEEE-UCSD-RoboCup-2020/TritonBot.git
+git clone https://github.com/IEEE-UCSD-RoboCup-2020/TritonSoccerAI.git
 
 # GrSim setup
 cd grSim
