@@ -1,7 +1,7 @@
 all: cpp java firm
 
 run:
-	python run2.py
+	python3 run2.py
 
 grSim:
 	./../grSim/bin/grSim
