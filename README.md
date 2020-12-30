@@ -2,7 +2,7 @@
 
 **Note**
 * when navigating to a sub-repository, git checkout master (or another desired branch) before making any changes to that sub-repository. This is because git submodule only trace a snapshot of the repository which is detached from the HEAD, to ensure regular usage of git push, checkout a branch HEAD first!
-
+* When switching branch, don't forget to clean the target or build folders
 ### Install Guide
 ```bash
 # Start at an empty directory ...
