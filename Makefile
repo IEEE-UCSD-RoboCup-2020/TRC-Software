@@ -20,7 +20,7 @@ cpp:
 	cd TritonBot/build && make -j
 
 java:
-	cd TritonSoccerAI && mvn compile assembly:single 
+	cd TritonSoccerAI && mvn clean compile assembly:single 
 
 firm:
 	cd Virtual-Firmware-grSim && make
