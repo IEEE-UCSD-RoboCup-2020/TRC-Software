@@ -10,7 +10,7 @@ uninstall:
 	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote
 
 run:
-	python3 run2.py
+	python3 run3.py -jcv
 
 
 grSim:

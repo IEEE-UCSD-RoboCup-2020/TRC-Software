@@ -44,7 +44,9 @@ def run_cmd(cmd, cwd, logfn):
 
 os.system("fuser -k {port}/tcp".format(port = vfirm_port))
 vfirm = run_cmd(vfirm_full_cmd, vfirm_dir, vfirm_logfn)
+time.sleep(2)
 tritonBot = run_cmd(tritonBot_full_cmd, tritonBot_dir, tritonBot_logfn)
+time.sleep(2)
 rcCore = run_cmd(rcCore_full_cmd, rcCore_dir, rcCore_logfn)
 
 tail_full_cmd = ["multitail",]
