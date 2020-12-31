@@ -19,10 +19,10 @@ tritonBot_vfirm_port = vfirm_port
 tritonBot_full_cmd = [tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port]
 
 rcCore_dir = dir_path + "/TritonSoccerAI"                                                            
-rcCore_cmd = "mvn"
-rcCore_package = "package"
-rcCore_exec = "exec:java"
-rcCore_full_cmd = [rcCore_cmd, rcCore_exec]                                
+rcCore_cmd = "java"
+rcCore_tag = "-jar"
+rcCore_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
+rcCore_full_cmd = [rcCore_cmd, rcCore_tag, rcCore_file]                                
                                                                 
 def run_cmd(cmd, cwd):
     print("opening new terminal with command: " + ' '.join(map(str, cmd))  + " at " + cwd)

@@ -20,12 +20,12 @@ cpp:
 	cd TritonBot/build && make -j
 
 java:
-	cd TritonSoccerAI && mvn package
+	cd TritonSoccerAI && mvn compile assembly:single 
 
 firm:
 	cd Virtual-Firmware-grSim && make
 
 init: firm
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
-	cd TritonSoccerAI; mvn clean install package
+	cd TritonSoccerAI; mvn clean install
 
