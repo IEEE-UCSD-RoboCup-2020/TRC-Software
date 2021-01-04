@@ -29,3 +29,9 @@ init: firm
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
 
+pull: 
+	cd TritonSoccerAI; git pull
+	cd TritonBot; git pull
+	cd Virtual-Firmware-grSim; git pull
+	cd PyRemote; git pull
+
