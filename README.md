@@ -1,4 +1,4 @@
-# TRC-Software
+# TritonsRCSC-Software-Pack
 
 **Note**
 * When switching branch, don't forget to clean the target or build folders
@@ -12,10 +12,10 @@ sudo apt install git build-essential cmake pkg-config qt5-default libqt5opengl5-
 
 # Git clone
 git clone https://github.com/RoboCup-SSL/grSim.git
-git clone https://github.com/IEEE-UCSD-RoboCup-2020/TRC-Software.git
+git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonsRCSC-Software-Pack.git
 
 # Setup
-cd TRC-Software
+cd TritonsRCSC-Software-Pack
 make install
 make init
 
@@ -33,7 +33,7 @@ make run
 # make
 
 # # TRC setup
-# cd ../../TRC-Software/TritonBot
+# cd ../../TritonsRCSC-Software-Pack/TritonBot
 # mkdir build
 # cd build 
 # cmake ..
@@ -52,5 +52,5 @@ make run
 
 # Everything is finished
 # sudo ./grSim/bin/grSim
-# python TRC-Software/run.py
+# python TritonsRCSC-Software-Pack/run.py
 ```

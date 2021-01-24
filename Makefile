@@ -1,17 +1,29 @@
 all: cpp java firm
 
 install:
-	git clone https://github.com/IEEE-UCSD-RoboCup-2020/Virtual-Firmware-grSim.git
-	git clone https://github.com/IEEE-UCSD-RoboCup-2020/PyRemote.git
-	git clone https://github.com/IEEE-UCSD-RoboCup-2020/TritonBot.git
-	git clone https://github.com/IEEE-UCSD-RoboCup-2020/TritonSoccerAI.git
+	git clone https://github.com/IEEE-UCSD-RoboCupSSL/Virtual-Firmware-grSim.git
+	git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git
+	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git
+	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git
 
 uninstall:
 	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote
 
-run:
-	python3 run3.py -jcv
+pull: 
+	cd TritonSoccerAI; git pull
+	cd TritonBot; git pull
+	cd Virtual-Firmware-grSim; git pull
+	cd PyRemote; git pull
 
+
+init: firm
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonSoccerAI; mvn clean install
+
+run:
+	python3 run3.py -j
+
+clean: clean-cpp clean-firm clean-java
 
 grSim:
 	./../grSim/bin/grSim
@@ -25,13 +37,12 @@ java:
 firm:
 	cd Virtual-Firmware-grSim && make
 
-init: firm
-	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
-	cd TritonSoccerAI; mvn clean install
+clean-cpp:
+	cd TritonBot/build && make clean
 
-pull: 
-	cd TritonSoccerAI; git pull
-	cd TritonBot; git pull
-	cd Virtual-Firmware-grSim; git pull
-	cd PyRemote; git pull
+clean-firm:
+	cd Virtual-Firmware-grSim && make clean
+
+clean-java: 
+	cd TritonSoccerAI && mvn clean install
 
