@@ -34,19 +34,20 @@ atexit.register(clear_ports)
 
 clear_ports()
 
-time.sleep(5)
+#time.sleep(5)
 for i in range(0, 6):
     vfirm_port = str(vfirm_port_base + i * 10)
     vfirm_robot_id = str(i)
     run_cmd_term([vfirm_cmd, vfirm_port, vfirm_robot_id, vfirm_is_blue], vfirm_dir)
+    time.sleep(1)
 
-    time.sleep(2)
-
+for i in range(0, 6):
     tritonBot_port_base = str(tritonBot_port_base_base + i * 100)
+    vfirm_port = str(vfirm_port_base + i * 10)
     tritonBot_vfirm_port = vfirm_port
     run_cmd_term([tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port], tritonBot_dir)   
 
-time.sleep(5)
+time.sleep(2)
 run_cmd_term(rcCore_full_cmd, rcCore_dir)
 
 while (True):
