@@ -3,7 +3,7 @@ import time
 import subprocess 
 import atexit                                              
 
-dir_path = os.path.dirname(os.path.realpath(__file__))            
+dir_path = os.path.dirname(os.path.realpath(__file__)) + "/.."            
                                                                 
 vfirm_dir = dir_path + "/Virtual-Firmware-grSim"
 vfirm_cmd = "./vfirm.exe"
@@ -15,11 +15,11 @@ tritonBot_cmd = "./TritonBot.exe"
 tritonBot_virtual = "-v"
 tritonBot_port_base_base = 6000
 
-rcCore_dir = dir_path + "/TritonSoccerAI"                                                            
-rcCore_cmd = "java"
-rcCore_tag = "-jar"
-rcCore_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
-rcCore_full_cmd = [rcCore_cmd, rcCore_tag, rcCore_file]  
+AI_dir = dir_path + "/TritonSoccerAI"                                                            
+AI_cmd = "java"
+AI_tag = "-jar"
+AI_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
+AI_full_cmd = [AI_cmd, AI_tag, AI_file]  
 
 def run_cmd_term(cmd, cwd):
     print("opening new terminal with command: " + ' '.join(map(str, cmd))  + " at " + cwd)
@@ -48,7 +48,7 @@ for i in range(0, 6):
     run_cmd_term([tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port], tritonBot_dir)   
 
 time.sleep(2)
-run_cmd_term(rcCore_full_cmd, rcCore_dir)
+run_cmd_term(AI_full_cmd, AI_dir)
 
 while (True):
     time.sleep(1)

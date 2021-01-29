@@ -4,7 +4,7 @@ import datetime
 import time
 import subprocess                                               
 
-home = os.path.dirname(os.path.realpath(__file__))
+home = os.path.dirname(os.path.realpath(__file__)) + "/.." 
 
 # Configure Logger
 logdir = home + "/log/"
@@ -31,12 +31,12 @@ tritonBot_vfirm_port = vfirm_port
 tritonBot_logfn = logdir + "tritonBot.txt"
 tritonBot_full_cmd = [tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port]
 
-rcCore_dir = home + "/TritonSoccerAI"                                                            
-rcCore_cmd = "java"
-rcCore_tag = "-jar"
-rcCore_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
-rcCore_logfn = logdir + "rcCore.txt"
-rcCore_full_cmd = [rcCore_cmd, rcCore_tag, rcCore_file]                 
+AI_dir = home + "/TritonSoccerAI"                                                            
+AI_cmd = "java"
+AI_tag = "-jar"
+AI_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
+AI_logfn = logdir + "AI.txt"
+AI_full_cmd = [AI_cmd, AI_tag, AI_file]                 
 
 def run_cmd(cmd, cwd, logfn):
     with open(logfn, 'w') as logfile:
@@ -47,12 +47,12 @@ vfirm = run_cmd(vfirm_full_cmd, vfirm_dir, vfirm_logfn)
 time.sleep(2)
 tritonBot = run_cmd(tritonBot_full_cmd, tritonBot_dir, tritonBot_logfn)
 time.sleep(2)
-rcCore = run_cmd(rcCore_full_cmd, rcCore_dir, rcCore_logfn)
+AI = run_cmd(AI_full_cmd, AI_dir, AI_logfn)
 
 tail_full_cmd = ["multitail",]
 for tag in sys.argv[1:]:
     if "j" in tag: 
-        tail_full_cmd.append(rcCore_logfn)
+        tail_full_cmd.append(AI_logfn)
     if "c" in tag:
         tail_full_cmd.append(tritonBot_logfn)
     if "v" in tag:

@@ -21,7 +21,10 @@ init: firm
 	cd TritonSoccerAI; mvn clean install
 
 run:
-	python3 run.py 
+	python3 RunScripts/run.py 
+
+test:
+	python3 TestScripts/test.py
 
 clean: clean-cpp clean-firm clean-java
 
