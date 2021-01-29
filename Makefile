@@ -20,8 +20,9 @@ init: firm
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
 
+#default run registers as blue team
 run:
-	python3 RunScripts/run.py 
+	make run-blue
 
 test:
 	python3 TestScripts/test.py
@@ -49,3 +50,15 @@ clean-firm:
 clean-java: 
 	cd TritonSoccerAI && mvn clean install
 
+
+run-blue:
+	python3 RunScripts/run_blue.py
+	
+run-yellow:
+	python3 RunScripts/run_yellow.py
+
+run-blue-cpp:
+	python3 RunScripts/run_blue_cpp.py
+
+run-yellow-cpp:
+	python3 RunScripts/run_yellow_cpp.py

@@ -15,16 +15,6 @@ tritonBot_cmd = "./TritonBot.exe"
 tritonBot_virtual = "-v"
 tritonBot_port_base_base = 6000
 
-AI_dir = dir_path + "/TritonSoccerAI"                                                            
-AI_cmd = "java"
-AI_tag = "-jar"
-AI_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
-AI_team = "BLUE"
-AI_prog_mode = "TEST"
-AI_Robots_IPaddr = "127.0.0.1"
-AI_Robots_IPportBase = str(tritonBot_port_base_base)
-AI_full_cmd = [AI_cmd, AI_tag, AI_file, AI_team, AI_prog_mode, AI_Robots_IPaddr, AI_Robots_IPportBase] 
-
 def run_cmd_term(cmd, cwd):
     print("opening new terminal with command: " + ' '.join(map(str, cmd))  + " at " + cwd)
     subprocess.Popen(["gnome-terminal", "--tab", "--"] + cmd, cwd=cwd)                                                   
@@ -51,10 +41,5 @@ for i in range(0, 6):
     tritonBot_vfirm_port = vfirm_port
     run_cmd_term([tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port], tritonBot_dir)   
 
-time.sleep(2)
-run_cmd_term(AI_full_cmd, AI_dir)
-
-print("Please go to the TritonSoccerAI terminal to interact with CLI")
-
 while (True):
-    time.sleep(1)
+    time.sleep(100)

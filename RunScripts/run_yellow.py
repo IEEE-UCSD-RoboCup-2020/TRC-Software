@@ -7,19 +7,23 @@ dir_path = os.path.dirname(os.path.realpath(__file__)) + "/.."
                                                                 
 vfirm_dir = dir_path + "/Virtual-Firmware-grSim"
 vfirm_cmd = "./vfirm.exe"
-vfirm_port_base = 8000
-vfirm_is_blue = "1"
+vfirm_port_base = 9000
+vfirm_is_blue = "0"
 
 tritonBot_dir = dir_path + "/TritonBot/build/"
 tritonBot_cmd = "./TritonBot.exe"
 tritonBot_virtual = "-v"
-tritonBot_port_base_base = 6000
+tritonBot_port_base_base = 7000
 
 AI_dir = dir_path + "/TritonSoccerAI"                                                            
 AI_cmd = "java"
 AI_tag = "-jar"
 AI_file = "target/TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"
-AI_full_cmd = [AI_cmd, AI_tag, AI_file]  
+AI_team = "YELLOW"
+AI_prog_mode = "NORMAL"
+AI_Robots_IPaddr = "127.0.0.1"
+AI_Robots_IPportBase = str(tritonBot_port_base_base)
+AI_full_cmd = [AI_cmd, AI_tag, AI_file, AI_team, AI_prog_mode, AI_Robots_IPaddr, AI_Robots_IPportBase]  
 
 def run_cmd_term(cmd, cwd):
     print("opening new terminal with command: " + ' '.join(map(str, cmd))  + " at " + cwd)
@@ -47,8 +51,8 @@ for i in range(0, 6):
     tritonBot_vfirm_port = vfirm_port
     run_cmd_term([tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port], tritonBot_dir)   
 
-time.sleep(2)
+time.sleep(1)
 run_cmd_term(AI_full_cmd, AI_dir)
 
 while (True):
-    time.sleep(1)
+    time.sleep(100)
