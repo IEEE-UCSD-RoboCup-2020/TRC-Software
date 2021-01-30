@@ -22,7 +22,7 @@ init: firm
 
 #default run registers as blue team
 run:
-	make run-blue
+	python3 RunScripts/default_run.py
 
 test:
 	python3 TestScripts/test.py
