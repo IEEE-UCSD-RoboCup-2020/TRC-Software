@@ -14,6 +14,14 @@ pull:
 	cd TritonBot; git pull
 	cd Virtual-Firmware-grSim; git pull
 	cd PyRemote; git pull
+	git pull
+
+status:
+	cd TritonSoccerAI; git status
+	cd TritonBot; git status
+	cd Virtual-Firmware-grSim; git status
+	cd PyRemote; git status
+	git status
 
 
 init: firm
@@ -49,6 +57,8 @@ clean-firm:
 
 clean-java: 
 	cd TritonSoccerAI && mvn clean install
+
+
 
 
 run-blue:
