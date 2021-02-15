@@ -35,6 +35,9 @@ run:
 test:
 	python3 TestScripts/test.py
 
+test2:
+	python3 TestScripts/test2.py
+
 clean: clean-cpp clean-firm clean-java
 
 grSim:
@@ -58,9 +61,6 @@ clean-firm:
 clean-java: 
 	cd TritonSoccerAI && mvn clean install
 
-
-
-
 run-blue:
 	python3 RunScripts/run_blue.py
 	
@@ -72,3 +72,6 @@ run-blue-cpp:
 
 run-yellow-cpp:
 	python3 RunScripts/run_yellow_cpp.py
+
+gs:
+	python3 OtherScripts/game_control.py
