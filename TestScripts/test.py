@@ -39,7 +39,10 @@ def run_java(cmd, cwd):
 def clear_ports():
     for i in range(0, 6):
         vfirm_port = str(vfirm_port_base + i * 10)
-        os.system("fuser -k {port}/tcp".format(port = vfirm_port))
+        if os.uname().sysname == "Darwin":
+            os.system("lsof -nti:{port} | xargs kill -9".format(port = vfirm_port))
+        else:
+            os.system("fuser -k {port}/tcp".format(port = vfirm_port))
 
 atexit.register(clear_ports)
 
