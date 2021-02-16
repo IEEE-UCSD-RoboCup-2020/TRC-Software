@@ -73,5 +73,5 @@ run-blue-cpp:
 run-yellow-cpp:
 	python3 RunScripts/run_yellow_cpp.py
 
-gs:
+gc:
 	python3 OtherScripts/game_control.py
