@@ -14,6 +14,13 @@ install:
 uninstall:
 	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote
 
+
+regenerate-proto-src:
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonSoccerAI; mvn clean install
+
+
+
 pull: 
 	cd TritonSoccerAI; git pull
 	cd TritonBot; git pull
@@ -46,7 +53,7 @@ grSim:
 	./../grSim/bin/grSim
 
 cpp:
-	cd TritonBot/build; make proto; make -j
+	cd TritonBot/build && make -j
 
 java:
 	cd TritonSoccerAI && mvn clean compile assembly:single 
@@ -55,7 +62,7 @@ firm:
 	cd Virtual-Firmware-grSim && make
 
 clean-cpp:
-	cd TritonBot/build; make clean; rm -rf ../proto/ProtoGenerated
+	cd TritonBot/build; make clean; rm -rf ../proto/ProtoGenerated; make proto
 
 clean-firm:
 	cd Virtual-Firmware-grSim && make clean
