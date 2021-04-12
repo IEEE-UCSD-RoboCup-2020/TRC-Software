@@ -1,13 +1,25 @@
 all: cpp java firm
 
+install-dependencies:
+	@echo "work in progress, comming soon"
+
 install:
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/Virtual-Firmware-grSim.git
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonSoccerAI; mvn clean install
 
 uninstall:
 	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote
+
+
+regenerate-proto-src:
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonSoccerAI; mvn clean install
+
+
 
 pull: 
 	cd TritonSoccerAI; git pull
@@ -24,9 +36,6 @@ status:
 	git status
 
 
-init: firm
-	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
-	cd TritonSoccerAI; mvn clean install
 
 #default run registers as blue team
 run:
@@ -53,7 +62,7 @@ firm:
 	cd Virtual-Firmware-grSim && make
 
 clean-cpp:
-	cd TritonBot/build && make clean
+	cd TritonBot/build; make clean; rm -rf ../proto/ProtoGenerated; make proto
 
 clean-firm:
 	cd Virtual-Firmware-grSim && make clean

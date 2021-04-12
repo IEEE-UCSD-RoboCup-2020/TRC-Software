@@ -17,7 +17,6 @@ git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonsRCSC-Software-Pack.git
 # Setup
 cd TritonsRCSC-Software-Pack
 make install
-make init
 
 # Compile All
 make
