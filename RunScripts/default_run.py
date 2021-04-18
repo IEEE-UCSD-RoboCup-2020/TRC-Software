@@ -21,8 +21,8 @@ def run_cmd(cmd, cwd):
 run_cmd_term(["make", "run-blue"], dir_path, True)
 run_cmd_term(["make", "run-yellow"], dir_path, True)
 time.sleep(12)
-run_cmd(["make", "gc"], dir_path)
-
+# run_cmd(["make", "gc"], dir_path)
+# kickOff
 
 while (True):
     time.sleep(1)
