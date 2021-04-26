@@ -58,7 +58,7 @@ for i in range(0, 6):
     tritonBot_vfirm_port = vfirm_port
     run_cmd_term([tritonBot_cmd, tritonBot_virtual, tritonBot_port_base, tritonBot_vfirm_port], tritonBot_dir, False)   
 
-time.sleep(2)
+time.sleep(4)
 run_java(AI_full_cmd, AI_dir)
 
 while (True):
