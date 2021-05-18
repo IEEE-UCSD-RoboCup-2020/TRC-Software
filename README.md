@@ -82,7 +82,14 @@ To run our AI software commanding virtual robots in the simulator, first open th
   * ```shell
     make open-grsim
     ```
+    
   * grSim might display error messgae in the bottom region, just ignore them
+
+  * For the first time running grSim, in order to let it work with our software, please manually change the following settings in the GUI
+
+    * Under Geometry / Game / Division, select division B
+    * Under Geometry / Game / Robots Count, type in 6
+    * Under Geometry / BlueTeam, select Triton, do the same for YellowTeam too
 
 * ER-Force Simulator
 
