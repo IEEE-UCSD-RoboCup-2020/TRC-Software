@@ -26,7 +26,7 @@ The install scripts will install many sub-repositories, including two simulator 
 
 #### Instruction
 
-Clone this repository, cd into it, then run: 	(root access is required)
+Clone this repository, cd into it, then run: 	(root access is required, might take a few minutes)
 
 ```shell
 make install
@@ -80,6 +80,7 @@ To run our AI software commanding virtual robots in the simulator, first open th
   * ```shell
     make open-grsim
     ```
+  * grSim might display error messgae in the bottom region, just ignore them
 
 * ER-Force Simulator
 
