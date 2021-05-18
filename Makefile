@@ -1,23 +1,28 @@
 all: cpp java firm
 
-install-dependencies:
-	@echo "work in progress, comming soon"
-
 install:
+	sudo apt update
+	sudo apt install cmake git build-essential cmake pkg-config qt5-default libqt5opengl5-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev protobuf-compiler libode-dev libboost-all-dev maven openjdk-14-jdk libarmadillo-dev clang 
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/Virtual-Firmware-grSim.git
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git
 	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git
+	git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git
+	cd grSim; mkdir -p build; cd build; cmake ..; make; sudo make install
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
 
 uninstall:
-	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote
+	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote grSim
 
 
 regenerate-proto-src:
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
+
+
+open-grsim:
+	screen -dmS grSim-session grSim/bin/grSim
 
 
 
@@ -26,6 +31,7 @@ pull:
 	cd TritonBot; git pull
 	cd Virtual-Firmware-grSim; git pull
 	cd PyRemote; git pull
+	cd grSim; git pull
 	git pull
 
 status:
@@ -33,6 +39,7 @@ status:
 	cd TritonBot; git status
 	cd Virtual-Firmware-grSim; git status
 	cd PyRemote; git status
+	cd grSim; git status
 	git status
 
 
@@ -49,8 +56,6 @@ test2:
 
 clean: clean-cpp clean-firm clean-java
 
-grSim:
-	./../grSim/bin/grSim
 
 cpp:
 	cd TritonBot/build && make -j
