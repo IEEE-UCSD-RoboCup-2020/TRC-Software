@@ -6,7 +6,16 @@ import messages_robocup_ssl_wrapper_pb2
 import messages_robocup_ssl_detection_pb2
 import messages_robocup_ssl_geometry_pb2
 
-packet = input()
+
+import io
+input_stream = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
+
+
+packet = f.read()
 ssl_wrapper = messages_robocup_ssl_wrapper_pb2.SSL_WrapperPacket()
 parsedPacket = ssl_wrapper.parseFrom(packet)
 print(parsedPacket)
+
+  
+
+

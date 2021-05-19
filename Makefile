@@ -101,4 +101,7 @@ gc:
 	python3 OtherScripts/game_control.py
 
 
-#print-vision-wrapper:
+mnc-path = UDP-Multicast-NetCat
+vbp-path = OtherScripts/VisionBroadcastPrinter/OldStandard
+print-vision-wrapper:
+	cd $(vbp-path); ../../../$(mnc-path)/mnc -l 224.5.23.2 10020 | python3 vbp.py
