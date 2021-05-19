@@ -8,15 +8,13 @@ install:
 	if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
 	if cd TritonSoccerAI; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git; fi
 	if cd VisionBroadcastPrinter; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/VisionBroadcastPrinter.git; fi
-	if cd VisionBroadcastPrinter/UDP-Multicast-NetCat; then git pull; else cd VisionBroadcastPrinter; git clone https://github.com/IEEE-UCSD-RoboCupSSL/UDP-Multicast-NetCat.git; fi
 	if cd grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git; fi
-	cd VisionBroadcastPrinter/UDP-Multicast-NetCat; make;
 	cd VisionBroadcastPrinter; make;
 	cd grSim; mkdir -p build; cd build; cmake ..; make; sudo make install
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
 
-progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote UDP-Multicast-NetCat  
+progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter  
 simulators = grSim
 
 uninstall:
@@ -103,7 +101,5 @@ gc:
 	python3 OtherScripts/game_control.py
 
 
-mnc-path = UDP-Multicast-NetCat
-vbp-path = OtherScripts/VisionBroadcastPrinter/OldStandard
-print-vision-wrapper:
-	cd $(vbp-path); ../../../$(mnc-path)/mnc -l 224.5.23.2 10020 | python3 vbp.py
+print-vision-detection-old:
+	VisionBroadcastPrinter/OldStandard/vbp detection
