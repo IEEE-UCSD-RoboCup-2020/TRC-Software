@@ -102,4 +102,4 @@ gc:
 
 
 print-vision-detection-old:
-	VisionBroadcastPrinter/OldStandard/vbp detection
+	VisionBroadcastPrinter/vbp detection
