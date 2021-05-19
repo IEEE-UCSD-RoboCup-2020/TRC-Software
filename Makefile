@@ -3,17 +3,27 @@ all: cpp java firm
 install:
 	sudo apt update
 	sudo apt install cmake git build-essential cmake pkg-config qt5-default libqt5opengl5-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev protobuf-compiler libode-dev libboost-all-dev maven openjdk-14-jdk libarmadillo-dev clang 
-	git clone https://github.com/IEEE-UCSD-RoboCupSSL/Virtual-Firmware-grSim.git
-	git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git
-	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git
-	git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git
-	git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git
+	if cd Virtual-Firmware-grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/Virtual-Firmware-grSim.git; fi
+	if cd PyRemote; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git; fi
+	if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
+	if cd TritonSoccerAI; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git; fi
+	if cd UDP-Multicast-NetCat; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/UDP-Multicast-NetCat.git; fi
+	if cd grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git; fi
+	cd UDP-Multicast-NetCat; make;
 	cd grSim; mkdir -p build; cd build; cmake ..; make; sudo make install
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
 
+progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote UDP-Multicast-NetCat  
+simulators = grSim
+
 uninstall:
-	rm -rf TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote grSim
+	rm -rf $(progs) $(simulators)
+	
+
+uninstall-except-simulators:
+	rm -rf $(progs)
+
 
 
 regenerate-proto-src:
@@ -89,3 +99,6 @@ run-yellow-cpp:
 
 gc:
 	python3 OtherScripts/game_control.py
+
+
+#print-vision-wrapper:
