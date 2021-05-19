@@ -7,9 +7,11 @@ install:
 	if cd PyRemote; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git; fi
 	if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
 	if cd TritonSoccerAI; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git; fi
-	if cd UDP-Multicast-NetCat; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/UDP-Multicast-NetCat.git; fi
+	if cd VisionBroadcastPrinter; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/VisionBroadcastPrinter.git; fi
+	if cd VisionBroadcastPrinter/UDP-Multicast-NetCat; then git pull; else cd VisionBroadcastPrinter; git clone https://github.com/IEEE-UCSD-RoboCupSSL/UDP-Multicast-NetCat.git; fi
 	if cd grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git; fi
-	cd UDP-Multicast-NetCat; make;
+	cd VisionBroadcastPrinter/UDP-Multicast-NetCat; make;
+	cd VisionBroadcastPrinter; make;
 	cd grSim; mkdir -p build; cd build; cmake ..; make; sudo make install
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 	cd TritonSoccerAI; mvn clean install
