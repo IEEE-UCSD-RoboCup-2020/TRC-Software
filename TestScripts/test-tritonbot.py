@@ -19,23 +19,16 @@ AI_prog_mode = "TEST_TRITONBOT"
 AI_Robots_IPaddr = "127.0.0.1"
 AI_Robots_IPportBase = str(tritonBot_port_base_base)
 AI_full_cmd = [AI_cmd, AI_tag, AI_file, AI_team, AI_prog_mode, AI_Robots_IPaddr, AI_Robots_IPportBase] 
+                                                
+            
 
-def run_cmd_term(cmd, cwd, tab = True):
-    if tab == True:
-        print("opening new terminal with command: " + ' '.join(map(str, cmd)))
-        subprocess.Popen(["gnome-terminal", "--tab", "--"] + cmd, cwd=cwd)                                                   
-    else:
-        print("running " + ' '.join(map(str, cmd))  + " as background process")
-        subprocess.Popen(cmd, cwd=cwd, stdout=subprocess.PIPE)                                                   
-                
-def run_main_cmd(cmd, cwd):
-    subprocess.Popen(cmd, cwd=cwd)
+subprocess.Popen([tritonBot_cmd, tritonBot_args[0], tritonBot_args[1], 
+                tritonBot_args[2], str(tritonBot_port_base_base)], cwd=tritonBot_dir)
 
-run_cmd_term(AI_full_cmd, AI_dir, True)
+time.sleep(2)
 
-
-run_main_cmd([tritonBot_cmd, tritonBot_args[0], tritonBot_args[1], 
-                tritonBot_args[2], str(tritonBot_port_base_base)], tritonBot_dir)   
+print("opening new terminal with command: " + ' '.join(map(str, AI_full_cmd)))
+subprocess.Popen(["gnome-terminal", "--"] + AI_full_cmd, cwd=AI_dir)
 
 
 
