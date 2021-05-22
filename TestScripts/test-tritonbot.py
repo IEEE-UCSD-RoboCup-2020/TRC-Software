@@ -25,7 +25,7 @@ AI_full_cmd = [AI_cmd, AI_tag, AI_file, AI_team, AI_prog_mode, AI_Robots_IPaddr,
 subprocess.Popen([tritonBot_cmd, tritonBot_args[0], tritonBot_args[1], 
                 tritonBot_args[2], str(tritonBot_port_base_base)], cwd=tritonBot_dir)
 
-time.sleep(2)
+time.sleep(1)
 
 print("opening new terminal with command: " + ' '.join(map(str, AI_full_cmd)))
 subprocess.Popen(["gnome-terminal", "--"] + AI_full_cmd, cwd=AI_dir)
