@@ -32,7 +32,7 @@ Clone this repository, cd into it, then run: 	(root access is required, might ta
 make install
 ```
 (many dependency would get installed via apt/apt-get, type "Y" along the way if prompted, if you are using a different Linux distribution, please refer to the Makefile to find out whhich packages to install)
-
+(ignore any warning messages when make install is installing grSim)
 
 Similarly, to uninstall:
 
