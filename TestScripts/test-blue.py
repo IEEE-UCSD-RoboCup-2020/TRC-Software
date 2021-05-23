@@ -59,7 +59,7 @@ for i in range(0, 6):
     tritonBot_port_base = str(tritonBot_port_base_base + i * 100)
     vfirm_port = str(vfirm_port_base + i * 10)
     tritonBot_vfirm_port = vfirm_port
-    run_cmd_term([tritonBot_cmd, tritonBot_virtual, "-i", str(i), 
+    run_cmd_term([tritonBot_cmd, tritonBot_virtual, 
                     tritonBot_port_base, tritonBot_vfirm_port], tritonBot_dir, False)   
 
 time.sleep(2)

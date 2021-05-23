@@ -6,7 +6,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__)) + "/.."
 
 tritonBot_dir = dir_path + "/TritonBot/build/"
 tritonBot_cmd = "./TritonBot"
-tritonBot_args = ["-vt", "-i", "0"]
+tritonBot_args = "-vt"
 tritonBot_port_base_base = 6500
 
 
@@ -22,8 +22,7 @@ AI_full_cmd = [AI_cmd, AI_tag, AI_file, AI_team, AI_prog_mode, AI_Robots_IPaddr,
                                                 
             
 
-subprocess.Popen([tritonBot_cmd, tritonBot_args[0], tritonBot_args[1], 
-                tritonBot_args[2], str(tritonBot_port_base_base)], cwd=tritonBot_dir)
+subprocess.Popen([tritonBot_cmd, tritonBot_args, str(tritonBot_port_base_base)], cwd=tritonBot_dir)
 
 time.sleep(1)
 
