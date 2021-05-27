@@ -10,6 +10,7 @@ pull:
 	@if cd VisionBroadcastPrinter; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/VisionBroadcastPrinter.git; fi
 	@if cd grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git; fi
 	@if cd ssl-simulation-protocol; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/ssl-simulation-protocol.git; fi
+	@if cd TritonBot/include/Misc/Inih/inih; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/inih.git TritonBot/include/Misc/Inih/inih; fi
 	
 install: pull
 	sudo apt update
@@ -22,7 +23,7 @@ install: pull
 
 
 
-progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter ssl-simulation-protocol
+progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter ssl-simulation-protocol TritonBot/include/Misc/Inih/inih
 simulators = grSim
 
 uninstall:
