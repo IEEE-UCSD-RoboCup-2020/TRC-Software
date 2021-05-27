@@ -17,9 +17,12 @@ install: pull
 	cd VisionBroadcastPrinter; make protosrc; make -j;
 	cd grSim; mkdir -p build; cd build; cmake ..; make; sudo make install
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonSoccerAI/src/main/java/Triton/Legacy/OldGrSimProto; make
 	cd TritonSoccerAI; mvn clean install
 
-progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter  
+
+
+progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter ssl-simulation-protocol
 simulators = grSim
 
 uninstall:
@@ -30,6 +33,11 @@ uninstall-except-simulators:
 	rm -rf $(progs)
 
 
+import-proto:
+	cp CustomProto/*.proto TritonBot/proto/
+	cp CustomProto/*.proto TritonSoccerAI/src/main/proto/
+	cp ssl-simulation-protocol/proto/*.proto TritonSoccerAI/src/main/proto/
+	
 
 regenerate-proto-src:
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
