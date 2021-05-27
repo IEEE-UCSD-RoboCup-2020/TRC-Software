@@ -59,6 +59,7 @@ that automatically pull the latest version for every sub-repositories, but the r
 ```shell
 make
 ```
+(try "sudo make" if strange error relating to permissions occurs)
 
 This make will build sources in the sub-repositories too!
 
