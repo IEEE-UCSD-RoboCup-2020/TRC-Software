@@ -63,16 +63,17 @@ status:
 run:
 	python3 RunScripts/default_run.py
 
-test: test-blue
+test: 
+	python3 TestScripts/test-AI-virtual.py -b
 
-test-blue:
-	python3 TestScripts/test-blue.py
+# test-blue:
+# 	python3 TestScripts/test-blue.py
 
-test-yellow:
-	python3 TestScripts/test-yellow.py
+# test-yellow:
+# 	python3 TestScripts/test-yellow.py
 
-test-tritonbot:
-	python3 TestScripts/test-tritonbot.py
+# test-tritonbot:
+# 	python3 TestScripts/test-tritonbot.py
 
 
 clean: clean-cpp clean-firm clean-java

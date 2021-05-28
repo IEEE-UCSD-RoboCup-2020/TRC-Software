@@ -11,7 +11,7 @@ vfirm_port_base = 8000
 vfirm_is_blue = "1"
 
 tritonBot_dir = dir_path + "/TritonBot/build/"
-tritonBot_cmd = "./TritonBot.exe"
+tritonBot_cmd = "./TritonBot"
 tritonBot_virtual = "-v"
 tritonBot_port_base_base = 6000
 
