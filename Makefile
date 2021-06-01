@@ -60,11 +60,14 @@ status:
 
 
 #default run registers as blue team
-run:
-	python3 RunScripts/default_run.py
+# run:
+# 	python3 RunScripts/default_run.py
 
 test: 
-	python3 TestScripts/test-AI-virtual.py -b
+	python3 PyScripts/TestScripts/test-AI-virtual.py -b -s mainsetup-grsim-6v6.ini
+
+test-tab: 
+	python3 PyScripts/TestScripts/test-AI-virtual.py -db -s mainsetup-grsim-6v6.ini
 
 # test-blue:
 # 	python3 TestScripts/test-blue.py
