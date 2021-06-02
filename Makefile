@@ -1,4 +1,11 @@
-all: cpp java firm
+all: #don't write it as "all: cpp java", which crashes my computer sometimes
+	cd TritonBot/build; make -j
+	cd TritonSoccerAI; mvn compile assembly:single
+cpp:
+	cd TritonBot/build; make
+
+java:
+	cd TritonSoccerAI; mvn compile assembly:single 
 
 
 pull: 	
@@ -79,38 +86,22 @@ test-tab:
 # 	python3 TestScripts/test-tritonbot.py
 
 
-clean: clean-cpp clean-firm clean-java
+clean: clean-cpp clean-java
 
 
-cpp:
-	cd TritonBot/build && make -j
 
-java:
-	cd TritonSoccerAI && mvn clean compile assembly:single 
-
-firm:
-	cd Virtual-Firmware-grSim && make
+# firm:
+# 	cd Virtual-Firmware-grSim && make
 
 clean-cpp:
 	cd TritonBot/build; make clean; rm -rf ../proto/ProtoGenerated; make proto
 
-clean-firm:
-	cd Virtual-Firmware-grSim && make clean
+# clean-firm:
+# 	cd Virtual-Firmware-grSim && make clean
 
 clean-java: 
 	cd TritonSoccerAI && mvn clean install
 
-run-blue:
-	python3 RunScripts/run_blue.py
-	
-run-yellow:
-	python3 RunScripts/run_yellow.py
-
-run-blue-cpp:
-	python3 RunScripts/run_blue_cpp.py
-
-run-yellow-cpp:
-	python3 RunScripts/run_yellow_cpp.py
 
 gc:
 	python3 OtherScripts/game_control.py
