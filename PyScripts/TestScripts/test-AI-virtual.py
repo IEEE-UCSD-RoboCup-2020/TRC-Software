@@ -74,7 +74,7 @@ print("Simulator: " + simulator)
 run_cmd(["java", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
             "-vbt", (cfg_path + mainsetup)], dir_path)
 
-time.sleep(1) # sleep is needed or it might crash for unknown reason (in background mode, tab mode won't crash, which is wierd)
+time.sleep(2) # sleep is needed or it might crash for unknown reason (in background mode, tab mode won't crash, which is wierd)
 
 #run TritonBots (cpp x num_robots)
 for i in range(0, num_robots):
