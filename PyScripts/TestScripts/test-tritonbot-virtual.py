@@ -30,7 +30,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-y", "--yellow", help="set yellow team to be tested", action="store_true")
 parser.add_argument("-b", "--blue", help="set blue team to be tested", action="store_true")
 parser.add_argument("-s", "--setup",  help="select a mainsetup-xxx.ini file in" + cfg_path)
-parser.add_argument("-d", "--debug", help="enable debug mode which will run Tritonbot in tab terminals", action="store_true")
 
 
 args = parser.parse_args()
@@ -72,19 +71,17 @@ print("Simulator: " + simulator)
 
 #run TritonSoccerAI (java)
 run_cmd(["java", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
-            team_color, "-vm", "test", (cfg_path + mainsetup)], dir_path)
+            team_color, "-vm", "test-tb", (cfg_path + mainsetup)], dir_path)
 
 time.sleep(2) # sleep is needed or it might crash for unknown reason (in background mode, tab mode won't crash, which is wierd)
 
 #run TritonBots (cpp x num_robots)
-for i in range(0, num_robots):
-    tb_port_base = str(port_base + i * id_offset)
-    run_in = "background"
-    if args.debug:
-        run_in = "tab"
-    run_cmd([(tritonbot_path + "TritonBot"), 
-            "-v", "-c", (cfg_path + "tritonbot-grsim.ini"), str(tb_port_base)], 
-              dir_path, run_in)  
+tb_port_base = str(port_base + 0 * id_offset)
+run_in = "background"
+run_in = "tab"
+run_cmd([(tritonbot_path + "TritonBot"), 
+        "-vt", "-c", (cfg_path + "tritonbot-grsim.ini"), str(tb_port_base)], 
+            dir_path, run_in)  
 
 
 

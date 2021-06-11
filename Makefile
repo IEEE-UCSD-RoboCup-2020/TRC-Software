@@ -82,8 +82,8 @@ test-tab:
 # test-yellow:
 # 	python3 TestScripts/test-yellow.py
 
-# test-tritonbot:
-# 	python3 TestScripts/test-tritonbot.py
+test-tritonbot:
+	python3 PyScripts/TestScripts/test-tritonbot-virtual.py -b -s mainsetup-grsim-6v6.ini
 
 
 clean: clean-cpp clean-java
