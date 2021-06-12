@@ -7,6 +7,9 @@ cpp:
 java:
 	cd TritonSoccerAI; mvn compile assembly:single 
 
+rasp:
+	cd TritonBot/build; make -j
+
 
 pull: 	
 	@git pull
@@ -34,7 +37,7 @@ install-rasp:
 	@if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
 	@if cd TritonBot/include/Misc/Inih/inih; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/inih.git TritonBot/include/Misc/Inih/inih; fi
 	sudo apt update
-	sudo apt install cmake git build-essential cmake pkg-config  libprotobuf-dev protobuf-compiler libboost-all-dev libarmadillo-dev clang
+	sudo apt install cmake git build-essential  pkg-config  libprotobuf-dev protobuf-compiler libboost-all-dev libarmadillo-dev clang
 	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 
 
