@@ -85,6 +85,10 @@ test-tab:
 test-tritonbot:
 	python3 PyScripts/TestScripts/test-tritonbot-virtual.py -b -s mainsetup-grsim-6v6.ini
 
+test-tritonbot-module-monitor:
+	python3 PyScripts/TestScripts/test-tritonbot-module-monitor-virtual.py -b -s mainsetup-grsim-6v6.ini
+
+
 
 clean: clean-cpp clean-java
 
