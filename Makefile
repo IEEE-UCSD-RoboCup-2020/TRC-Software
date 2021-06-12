@@ -19,6 +19,7 @@ pull:
 	@if cd ssl-simulation-protocol; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/ssl-simulation-protocol.git; fi
 	@if cd TritonBot/include/Misc/Inih/inih; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/inih.git TritonBot/include/Misc/Inih/inih; fi
 	
+
 install: pull
 	sudo apt update
 	sudo apt install cmake git build-essential cmake pkg-config qt5-default libqt5opengl5-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev protobuf-compiler libode-dev libboost-all-dev maven openjdk-14-jdk libarmadillo-dev clang screen
@@ -28,6 +29,13 @@ install: pull
 	cd TritonSoccerAI/src/main/java/Triton/Legacy/OldGrSimProto; make
 	cd TritonSoccerAI; mvn clean install
 
+install-rasp:  	
+	@git pull
+	@if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
+	@if cd TritonBot/include/Misc/Inih/inih; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/inih.git TritonBot/include/Misc/Inih/inih; fi
+	sudo apt update
+	sudo apt install cmake git build-essential cmake pkg-config  libprotobuf-dev protobuf-compiler libboost-all-dev libarmadillo-dev clang
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
 
 
 progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter ssl-simulation-protocol TritonBot/include/Misc/Inih/inih
