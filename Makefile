@@ -1,14 +1,14 @@
 all: #don't write it as "all: cpp java", which crashes my computer sometimes
-	cd TritonBot/build; make -j
+	cd TritonBot/build; make -j8
 	cd TritonSoccerAI; mvn compile assembly:single
 cpp:
-	cd TritonBot/build; make
+	cd TritonBot/build; make -j8
 
 java:
 	cd TritonSoccerAI; mvn compile assembly:single 
 
 rasp:
-	cd TritonBot/build; make -j2
+	cd TritonBot/build; make -j8
 
 
 pull: 	
@@ -28,7 +28,7 @@ install: pull
 	sudo apt install cmake git build-essential cmake pkg-config qt5-default libqt5opengl5-dev libgl1-mesa-dev libglu1-mesa-dev libprotobuf-dev protobuf-compiler libode-dev libboost-all-dev maven openjdk-14-jdk libarmadillo-dev clang screen
 	cd VisionBroadcastPrinter; make protosrc; make -j;
 	cd grSim; mkdir -p build; cd build; cmake ..; make; sudo make install
-	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j8
 	cd TritonSoccerAI/src/main/java/Triton/Legacy/OldGrSimProto; make
 	cd TritonSoccerAI; mvn clean install
 
