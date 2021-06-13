@@ -38,7 +38,7 @@ install-rasp:
 	@if cd TritonBot/include/Misc/Inih/inih; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/inih.git TritonBot/include/Misc/Inih/inih; fi
 	sudo apt update
 	sudo apt install cmake git build-essential  pkg-config  libprotobuf-dev protobuf-compiler libboost-all-dev libarmadillo-dev clang
-	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j2
+	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j8
 
 
 progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter ssl-simulation-protocol TritonBot/include/Misc/Inih/inih
