@@ -81,6 +81,8 @@ status:
 # run:
 # 	python3 RunScripts/default_run.py
 
+
+### Example make test-tab LMTBM=McuClientModule
 LMTBM = ""
 
 test: 
