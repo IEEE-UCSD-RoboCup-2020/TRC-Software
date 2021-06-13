@@ -81,11 +81,13 @@ status:
 # run:
 # 	python3 RunScripts/default_run.py
 
+LMTBM = ""
+
 test: 
 	python3 PyScripts/TestScripts/test-AI-virtual.py -b -s mainsetup-grsim-6v6.ini
 
 test-tab: 
-	python3 PyScripts/TestScripts/test-AI-virtual.py -db -s mainsetup-grsim-6v6.ini
+	python3 PyScripts/TestScripts/test-AI-virtual.py -db -s mainsetup-grsim-6v6.ini --lmtbm $(LMTBM)
 
 # test-blue:
 # 	python3 TestScripts/test-blue.py

@@ -31,11 +31,12 @@ parser.add_argument("-y", "--yellow", help="set yellow team to be tested", actio
 parser.add_argument("-b", "--blue", help="set blue team to be tested", action="store_true")
 parser.add_argument("-s", "--setup",  help="select a mainsetup-xxx.ini file in" + cfg_path)
 parser.add_argument("-d", "--debug", help="enable debug mode which will run Tritonbot in tab terminals", action="store_true")
-
+parser.add_argument("--lmtbm", help="log monitored tritonbot module, give it a module name as argument")
 
 args = parser.parse_args()
 team_color = "-b" #default is blue team
 mainsetup = "mainsetup-grsim-6v6.ini" #default setup
+lmtbm = "None"
 
 if args.blue:
     team_color = "-b"
@@ -45,6 +46,10 @@ if args.yellow:
     print("Team color: yellow")
 if args.setup != None:
     mainsetup = args.setup
+
+if args.lmtbm != None:
+    lmtbm = args.lmtbm
+
 
 config = configparser.ConfigParser()
 config.read(cfg_path + mainsetup)
@@ -82,7 +87,12 @@ for i in range(0, num_robots):
     run_in = "background"
     if args.debug:
         run_in = "tab"
-    run_cmd([(tritonbot_path + "TritonBot"), 
+    if lmtbm != "None":  
+        run_cmd([(tritonbot_path + "TritonBot"), 
+            "-v", "-l", lmtbm, "-c", (cfg_path + "tritonbot-grsim.ini"), str(tb_port_base)], 
+              dir_path, run_in)
+    else:
+        run_cmd([(tritonbot_path + "TritonBot"), 
             "-v", "-c", (cfg_path + "tritonbot-grsim.ini"), str(tb_port_base)], 
               dir_path, run_in)  
 
