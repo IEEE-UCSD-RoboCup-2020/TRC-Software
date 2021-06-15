@@ -5,17 +5,17 @@ from scipy import linalg
 
 theta = np.radians(110/2)
 phi = np.radians(110/2)
-R = 1
+R = 0.09
 
 WtoB = np.array([[np.cos(theta)/2, -np.cos(phi)/2, -np.cos(phi)/2, np.cos(theta)/2],
 				 [np.sin(theta)/2, np.sin(phi)/2, -np.sin(phi)/2, -np.sin(theta)/2],
-				 [-R, -R, -R, -R]])
+				 [-1/(4*R), -1/(4*R), -1/(4*R), -1/(4*R)]])
 
 w_n = np.array([100, 100, -100, -100])
 w_w = np.array([-100, 100, 100, -100])
 w_s = np.array([-100, -100, 100, 100])
 w_e = np.array([100, -100, -100, 100])
-w_cc = np.array([-100, -100, -100, -100])
+w_cc = np.array([-6.28, -6.28, -6.28, -6.28])
 w_c = np.array([100, 100, 100, 100])
 
 
@@ -52,7 +52,7 @@ print("MaxVerticalSpeed: ", MaxVerticalSpeed)
 print("MaxHorizontalSpeed: ",MaxHorizontalSpeed)
 NormB = np.array([[MaxHorizontalSpeed/100, 0, 0],
 				 [0, MaxVerticalSpeed/100, 0],
-				 [0, 0, 4]])
+				 [0, 0, 1]])
 
 print("BodyToWheel_Normalized: North = ", BtoW.dot(NormB).dot(b_n))
 print("BodyToWheel_Normalized: West = ", BtoW.dot(NormB).dot(b_w))
