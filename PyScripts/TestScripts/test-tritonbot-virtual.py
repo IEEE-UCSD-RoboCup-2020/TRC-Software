@@ -5,6 +5,9 @@ import atexit
 import argparse
 import configparser
 
+
+robot_config = "robot-2021.ini"
+
 dir_path = os.path.dirname(os.path.realpath(__file__)) + "/../.."    
 cfg_path = dir_path + "/Config/development/virtual/"
 tritonbot_path = dir_path + "/TritonBot/build/"
@@ -71,7 +74,10 @@ print("Simulator: " + simulator)
 
 #run TritonSoccerAI (java)
 run_cmd(["java", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
-            team_color, "-vm", "test-tb", (cfg_path + mainsetup)], dir_path)
+            team_color, "-vm", "test-tb", 
+            (cfg_path + mainsetup),
+            (cfg_path + robot_config)
+            ], dir_path)
 
 time.sleep(2) # sleep is needed or it might crash for unknown reason (in background mode, tab mode won't crash, which is wierd)
 
@@ -80,7 +86,7 @@ tb_port_base = str(port_base + 0 * id_offset)
 run_in = "background"
 run_in = "tab"
 run_cmd([(tritonbot_path + "TritonBot"), 
-        "-vt", "-c", (cfg_path + "tritonbot-grsim.ini"), str(tb_port_base)], 
+        "-vt", "-c", (cfg_path + tritonbot_config), str(tb_port_base)], 
             dir_path, run_in)  
 
 
