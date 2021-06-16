@@ -84,8 +84,8 @@ run_cmd(["java", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar
             (cfg_path + robot_config)
             ], dir_path)
 if args.debug:
-    time.sleep(3)
-time.sleep(3) # sleep is needed or it might crash for unknown reason (in background mode, tab mode won't crash, which is wierd)
+    time.sleep(1)
+time.sleep(2) # sleep is needed or it might crash for unknown reason (in background mode, tab mode won't crash, which is wierd)
 
 #run TritonBots (cpp x num_robots)
 for i in range(0, num_robots):
