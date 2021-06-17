@@ -7,6 +7,7 @@ theta = np.radians(110/2)
 phi = np.radians(110/2)
 R = 0.09
 
+
 WtoB = np.array([[np.cos(theta)/2, -np.cos(phi)/2, -np.cos(phi)/2, np.cos(theta)/2],
 				 [np.sin(theta)/2, np.sin(phi)/2, -np.sin(phi)/2, -np.sin(theta)/2],
 				 [-1/(4*R), -1/(4*R), -1/(4*R), -1/(4*R)]])
@@ -102,7 +103,8 @@ def norm_bvec(bvec):
 		bvec[2] = -100.00
 	max_mag_for_xy = np.sqrt(100**2 - bvec[2]**2)
 	xy = np.array([bvec[0], bvec[1]])
-	xy = normalize(xy) * max_mag_for_xy
+	if np.linalg.norm(xy) > max_mag_for_xy:
+		xy = normalize(xy) * max_mag_for_xy
 	return np.array([xy[0], xy[1], bvec[2]])
 
 print("Norm(", test_bvec0, "): ", norm_bvec(test_bvec0))
@@ -164,6 +166,11 @@ test_bvec8 = np.array([-100, 0, 0])
 test_bvec9 = np.array([0, -100, 0])
 test_bvec10 = np.array([0, 0, -100])
 test_bvec11 = np.array([100, 100, 100])
+test_bvec12 = np.array([44, 88, 0])
+test_bvec13 = np.array([50, 0, 0])
+test_bvec14 = np.array([0, 50, 0])
+test_bvec15 = np.array([0, 0, 50])
+test_bvec16 = np.array([50, 25, 0])
 
 print("B-W Transform Mapped Norm(", test_bvec0, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec0))))
 print("B-W Transform Mapped Norm(", test_bvec1, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec1))))
@@ -177,6 +184,15 @@ print("B-W Transform Mapped Norm(", test_bvec8, "): ", BtoW.dot(bvecmap(norm_bve
 print("B-W Transform Mapped Norm(", test_bvec9, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec9))))
 print("B-W Transform Mapped Norm(", test_bvec10, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec10))))
 print("B-W Transform Mapped Norm(", test_bvec11, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec11))))
+print("B-W Transform Mapped Norm(", test_bvec12, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec12))))
+print("B-W Transform Mapped Norm(", test_bvec13, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec13))))
+print("B-W Transform Mapped Norm(", test_bvec14, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec14))))
+print("B-W Transform Mapped Norm(", test_bvec15, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec15))))
+print("B-W Transform Mapped Norm(", test_bvec16, "): ", BtoW.dot(bvecmap(norm_bvec(test_bvec16))))
+
+
+print(norm_bvec(test_bvec13))
+print(norm_bvec(test_bvec16))
 
 
 
