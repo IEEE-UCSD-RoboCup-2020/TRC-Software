@@ -76,6 +76,24 @@ if env == "erforcesim":
 
 print("Simulator: " + simulator)
 
+##########################################
+def clear_ports():
+    for i in range(0, num_robots):
+        firstport = port_base + i * id_offset 
+        os.system("fuser -k {port}/tcp".format(port = str(firstport)))
+        os.system("fuser -k {port}/udp".format(port = str(firstport + 1)))
+        os.system("fuser -k {port}/tcp".format(port = str(firstport + 2)))
+        os.system("fuser -k {port}/udp".format(port = str(firstport + 3)))
+        os.system("fuser -k {port}/udp".format(port = str(firstport + 4)))
+
+atexit.register(clear_ports)
+clear_ports()
+##########################################
+
+
+
+
+
 
 #run TritonSoccerAI (java)
 run_cmd(["java", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
