@@ -84,12 +84,14 @@ status:
 
 ### Example make test-tab LMTBM=McuClientModule
 LMTBM = ""
+GRSIM = "mainsetup-grsim-6v6.ini"
+ERFORCE_SIM = "mainsetup-erforcesim-6v6.ini"
 
 test: 
-	python3 PyScripts/TestScripts/test-AI-virtual.py -b -s mainsetup-grsim-6v6.ini
+	python3 PyScripts/TestScripts/test-AI-virtual.py -b -s $(ERFORCE_SIM)
 
 test-tab: 
-	python3 PyScripts/TestScripts/test-AI-virtual.py -db -s mainsetup-grsim-6v6.ini --lmtbm $(LMTBM)
+	python3 PyScripts/TestScripts/test-AI-virtual.py -db -s $(ERFORCE_SIM) --lmtbm $(LMTBM)
 
 # test-blue:
 # 	python3 TestScripts/test-blue.py
@@ -98,11 +100,10 @@ test-tab:
 # 	python3 TestScripts/test-yellow.py
 
 test-tritonbot:
-	python3 PyScripts/TestScripts/test-tritonbot-virtual.py -b -s mainsetup-grsim-6v6.ini
+	python3 PyScripts/TestScripts/test-tritonbot-virtual.py -b -s $(ERFORCE_SIM)
 
 test-tritonbot-module-monitor:
-	python3 PyScripts/TestScripts/test-tritonbot-module-monitor-virtual.py -b -s mainsetup-grsim-6v6.ini
-
+	python3 PyScripts/TestScripts/test-tritonbot-module-monitor-virtual.py -b -s $(ERFORCE_SIM)
 
 
 clean: clean-cpp clean-java

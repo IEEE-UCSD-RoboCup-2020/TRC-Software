@@ -38,6 +38,9 @@ parser.add_argument("--lmtbm", help="log monitored tritonbot module, give it a m
 args = parser.parse_args()
 team_color = "-b" #default is blue team
 mainsetup = "mainsetup-grsim-6v6.ini" #default setup
+if args.setup != None:
+    mainsetup = args.setup
+    
 lmtbm = "None"
 
 if args.blue:
@@ -46,8 +49,6 @@ if args.blue:
 if args.yellow:
     team_color = "-y"
     print("Team color: yellow")
-if args.setup != None:
-    mainsetup = args.setup
 
 if args.lmtbm != None:
     lmtbm = args.lmtbm
@@ -71,8 +72,8 @@ if env == "grsim":
     tritonbot_config = "tritonbot-grsim.ini"  
     simulator = "grsim"
 if env == "erforcesim":
-    print("...")
-    exit(-1)
+    tritonbot_config = "tritonbot-erforcesim.ini"  
+    simulator = "erforcesim"
 
 print("Simulator: " + simulator)
 
