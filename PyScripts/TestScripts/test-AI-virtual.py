@@ -31,12 +31,15 @@ def run_cmd(cmd, path, mode=None):
 parser = argparse.ArgumentParser()
 parser.add_argument("-y", "--yellow", help="set yellow team to be tested", action="store_true")
 parser.add_argument("-b", "--blue", help="set blue team to be tested", action="store_true")
+parser.add_argument("-l", "--left", help="guard goal at left", action="store_true")
+parser.add_argument("-r", "--right", help="guard goal at right", action="store_true")
 parser.add_argument("-s", "--setup",  help="select a mainsetup-xxx.ini file in" + cfg_path)
 parser.add_argument("-d", "--debug", help="enable debug mode which will run Tritonbot in tab terminals", action="store_true")
 parser.add_argument("--lmtbm", help="log monitored tritonbot module, give it a module name as argument")
 
 args = parser.parse_args()
 team_color = "-b" #default is blue team
+team_side = "-l" #default is to guard left goal
 mainsetup = "mainsetup-grsim-6v6.ini" #default setup
 if args.setup != None:
     mainsetup = args.setup
@@ -49,6 +52,13 @@ if args.blue:
 if args.yellow:
     team_color = "-y"
     print("Team color: yellow")
+
+if args.left:
+    team_side = "-l"
+    print("Team side: left")
+if args.right:
+    team_side = "-r"
+    print("Team side: right")
 
 if args.lmtbm != None:
     lmtbm = args.lmtbm
@@ -99,7 +109,7 @@ clear_ports()
 
 #run TritonSoccerAI (java)
 run_cmd(["java", "-Xms16384M", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
-            team_color, "-vm", "test", "-s", simulator,
+            team_color, team_side, "-vm", "test", "-s", simulator,
             (cfg_path + mainsetup),
             (cfg_path + robot_config)
             ], dir_path)
