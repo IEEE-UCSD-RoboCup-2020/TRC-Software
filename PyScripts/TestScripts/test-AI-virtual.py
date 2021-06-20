@@ -72,15 +72,16 @@ if env == "grsim":
     tritonbot_config = "tritonbot-grsim.ini"  
     simulator = "grsim"
 if env == "erforcesim":
-    tritonbot_config = "tritonbot-erforcesim.ini"  
+    #tritonbot_config = "tritonbot-erforcesim.ini" 
+    tritonbot_config = "tritonbot-grsim.ini"   
     simulator = "erforcesim"
 
 print("Simulator: " + simulator)
 
 
 #run TritonSoccerAI (java)
-run_cmd(["java", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
-            team_color, "-vm", "test", 
+run_cmd(["java", "-Xms16384M", "-jar", (tritonsoccerAI_path + "TritonSoccerAI-1.0-SNAPSHOT-jar-with-dependencies.jar"),
+            team_color, "-vm", "test", "-s", simulator,
             (cfg_path + mainsetup),
             (cfg_path + robot_config)
             ], dir_path)
