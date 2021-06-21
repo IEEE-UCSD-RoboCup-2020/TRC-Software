@@ -76,6 +76,10 @@ LMTBM = ""
 GRSIM = "mainsetup-grsim-6v6.ini"
 ERFORCE_SIM = "mainsetup-erforcesim-6v6.ini"
 
+run: run-blueright
+run-blueright:
+	python3 PyScripts/RunScripts/vt2021.py -br -s $(ERFORCE_SIM)
+
 test-grsim:
 	python3 PyScripts/TestScripts/test-AI-virtual.py -bl -s $(GRSIM)
 test-grsim-tab:
