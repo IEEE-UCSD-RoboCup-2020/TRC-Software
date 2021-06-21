@@ -82,8 +82,7 @@ if env == "grsim":
     tritonbot_config = "tritonbot-grsim.ini"  
     simulator = "grsim"
 if env == "erforcesim":
-    #tritonbot_config = "tritonbot-erforcesim.ini" 
-    tritonbot_config = "tritonbot-grsim.ini"   
+    tritonbot_config = "tritonbot-erforcesim.ini"
     simulator = "erforcesim"
 
 print("Simulator: " + simulator)

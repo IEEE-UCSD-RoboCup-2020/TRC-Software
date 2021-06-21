@@ -112,7 +112,7 @@ test-yellowright:
 test: test-blueleft
 
 test-tab: 
-	python3 PyScripts/TestScripts/test-AI-virtual.py -db -s $(ERFORCE_SIM) --lmtbm $(LMTBM)
+	python3 PyScripts/TestScripts/test-AI-virtual.py -dbl -s $(ERFORCE_SIM) --lmtbm $(LMTBM)
 
 # test-blue:
 # 	python3 TestScripts/test-blue.py
