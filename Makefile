@@ -87,6 +87,8 @@ LMTBM = ""
 GRSIM = "mainsetup-grsim-6v6.ini"
 ERFORCE_SIM = "mainsetup-erforcesim-6v6.ini"
 
+test-grsim:
+	python3 PyScripts/TestScripts/test-AI-virtual.py -bl -s $(GRSIM)
 test-grsim-tab:
 	python3 PyScripts/TestScripts/test-AI-virtual.py -dbl -s $(GRSIM) --lmtbm $(LMTBM)
 
