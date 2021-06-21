@@ -32,14 +32,6 @@ install: pull
 	cd TritonSoccerAI/src/main/java/Triton/Legacy/OldGrSimProto; make
 	cd TritonSoccerAI; mvn clean install
 
-install-rasp:  	
-	@git pull
-	@if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
-	@if cd TritonBot/include/Misc/Inih/inih; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/inih.git TritonBot/include/Misc/Inih/inih; fi
-	sudo apt update
-	sudo apt install cmake git build-essential  pkg-config  libprotobuf-dev protobuf-compiler libboost-all-dev libarmadillo-dev clang
-	cd TritonBot; mkdir -p build; cd build; cmake ..; make clean; make proto; cmake ..; make -j8
-
 
 progs = TritonBot TritonSoccerAI Virtual-Firmware-grSim PyRemote VisionBroadcastPrinter ssl-simulation-protocol TritonBot/include/Misc/Inih/inih
 simulators = grSim
@@ -77,9 +69,6 @@ status:
 
 
 
-#default run registers as blue team
-# run:
-# 	python3 RunScripts/default_run.py
 
 
 ### Example make test-tab LMTBM=McuClientModule
@@ -92,14 +81,6 @@ test-grsim:
 test-grsim-tab:
 	python3 PyScripts/TestScripts/test-AI-virtual.py -dbl -s $(GRSIM) --lmtbm $(LMTBM)
 
-# for ErForceSim Team Color doesn't determine whether the goal is on the left or right hand side 
-# 	in this case, let Blue not mean that team color is blue, instead it means the the goal opponent guards is on the right hand side
-# TLDR:
-# For ErForceSim Only:
-#	Blue ==> Goal On Right
-# 	Yellow ==> Goal on Left
-
-
 test-blueleft: 
 	python3 PyScripts/TestScripts/test-AI-virtual.py -bl -s $(ERFORCE_SIM)
 test-blueright: 
@@ -111,16 +92,10 @@ test-yellowleft:
 test-yellowright: 
 	python3 PyScripts/TestScripts/test-AI-virtual.py -yr -s $(ERFORCE_SIM)
 
-test: test-blueleft
+test: test-blueright
 
 test-tab: 
 	python3 PyScripts/TestScripts/test-AI-virtual.py -dbl -s $(ERFORCE_SIM) --lmtbm $(LMTBM)
-
-# test-blue:
-# 	python3 TestScripts/test-blue.py
-
-# test-yellow:
-# 	python3 TestScripts/test-yellow.py
 
 test-tritonbot:
 	python3 PyScripts/TestScripts/test-tritonbot-virtual.py -b -s $(ERFORCE_SIM)
@@ -133,14 +108,10 @@ clean: clean-cpp clean-java
 
 
 
-# firm:
-# 	cd Virtual-Firmware-grSim && make
+
 
 clean-cpp:
 	cd TritonBot/build; make clean; rm -rf ../proto/ProtoGenerated; make proto
-
-# clean-firm:
-# 	cd Virtual-Firmware-grSim && make clean
 
 clean-java: 
 	cd TritonSoccerAI && mvn clean install
