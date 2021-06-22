@@ -80,6 +80,15 @@ run: run-blueright
 run-blueright:
 	python3 PyScripts/RunScripts/vt2021.py -br -s $(ERFORCE_SIM)
 
+run-blueleft:
+	python3 PyScripts/RunScripts/vt2021.py -bl -s $(ERFORCE_SIM)
+
+run-yellowright:
+	python3 PyScripts/RunScripts/vt2021.py -yr -s $(ERFORCE_SIM)
+
+run-yellowleft:
+	python3 PyScripts/RunScripts/vt2021.py -yl -s $(ERFORCE_SIM)
+
 test-grsim:
 	python3 PyScripts/TestScripts/test-AI-virtual.py -bl -s $(GRSIM)
 test-grsim-tab:
