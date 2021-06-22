@@ -15,8 +15,8 @@ pull:
 	@git pull
 	@if cd Virtual-Firmware-grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/Virtual-Firmware-grSim.git; fi
 	@if cd PyRemote; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/PyRemote.git; fi
-	@if cd TritonBot; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
-	@if cd TritonSoccerAI; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git; fi
+	@if cd TritonBot; then git pull; else git clone -b VTournament https://github.com/IEEE-UCSD-RoboCupSSL/TritonBot.git; fi
+	@if cd TritonSoccerAI; then git pull; else git clone -b VTournament https://github.com/IEEE-UCSD-RoboCupSSL/TritonSoccerAI.git; fi
 	@if cd VisionBroadcastPrinter; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/VisionBroadcastPrinter.git; fi
 	@if cd grSim; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/grSim.git; fi
 	@if cd ssl-simulation-protocol; then git pull; else git clone https://github.com/IEEE-UCSD-RoboCupSSL/ssl-simulation-protocol.git; fi
