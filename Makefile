@@ -75,8 +75,16 @@ status:
 LMTBM = ""
 GRSIM = "mainsetup-grsim-6v6.ini"
 ERFORCE_SIM = "mainsetup-erforcesim-6v6.ini"
+ERFORCE_SIM2 = "mainsetup-erforcesim-6v6-2.ini"
 
-run: run-blueright
+
+run: run-bluenegative
+run-bluepositive: run-blueright
+run-bluenegative: run-blueleft
+run-yellowpositive: run-yellowright
+run-yellownegative: run-yellowleft
+
+
 run-blueright:
 	python3 PyScripts/RunScripts/vt2021.py -br -s $(ERFORCE_SIM)
 
@@ -84,10 +92,10 @@ run-blueleft:
 	python3 PyScripts/RunScripts/vt2021.py -bl -s $(ERFORCE_SIM)
 
 run-yellowright:
-	python3 PyScripts/RunScripts/vt2021.py -yr -s $(ERFORCE_SIM)
+	python3 PyScripts/RunScripts/vt2021.py -yr -s $(ERFORCE_SIM2)
 
 run-yellowleft:
-	python3 PyScripts/RunScripts/vt2021.py -yl -s $(ERFORCE_SIM)
+	python3 PyScripts/RunScripts/vt2021.py -yl -s $(ERFORCE_SIM2)
 
 test-grsim:
 	python3 PyScripts/TestScripts/test-AI-virtual.py -bl -s $(GRSIM)
